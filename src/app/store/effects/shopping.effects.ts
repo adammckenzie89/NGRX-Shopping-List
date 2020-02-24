@@ -3,15 +3,15 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 
 import { LoadShoppingAction,
-  ShoppingActionTypes,
+   ShoppingActionTypes,
    LoadShoppingSuccessAction,
    LoadShoppingFailureAction,
    AddItemAction,
    AddItemSuccessAction,
    AddItemFailureAction,
    RemoveItemAction,
-   RemoveItemSuccessAction,
-   RemoveItemFailureAction } from '../actions/shopping.actions';
+   RemoveItemSuccessAction
+  } from '../actions/shopping.actions';
 import { of } from 'rxjs';
 import { ShoppingService } from 'src/app/shopping.service';
 
@@ -43,20 +43,17 @@ export class ShoppingEffects {
           )
       )
   );
-
-  @Effect() removeShoppingItem$ = this.actions$
+  @Effect() deleteShoppingItem$ = this.actions$
     .pipe(
       ofType<RemoveItemAction>(ShoppingActionTypes.REMOVE_ITEM),
       mergeMap(
         (data) => this.shoppingService.deleteShoppingItem(data.payload)
           .pipe(
             map(() => new RemoveItemSuccessAction(data.payload)),
-            catchError(error => of(new RemoveItemFailureAction(error)))
+            catchError(error => of(new AddItemFailureAction(error)))
           )
       )
     );
-
-
   constructor(
     private actions$: Actions,
     private shoppingService: ShoppingService

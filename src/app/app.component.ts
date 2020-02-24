@@ -13,7 +13,8 @@ import { AddItemAction, RemoveItemAction } from './store/actions/shopping.action
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  loading$: Observable<boolean>;
+  error$: Observable<Error>;
   shoppingItems: Observable<Array<ShoppingItem>>;
   newShoppingItem: ShoppingItem = {id: '', name: ''};
 

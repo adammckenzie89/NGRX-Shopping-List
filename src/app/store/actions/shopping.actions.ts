@@ -25,7 +25,7 @@ export class LoadShoppingSuccessAction implements Action {
 export class LoadShoppingFailureAction implements Action {
   readonly type = ShoppingActionTypes.LOAD_SHOPPING_FAILURE;
 
-  constructor(public payload: Error) {}
+  constructor(public payload: string) {}
 }
 
 export class AddItemAction implements Action {

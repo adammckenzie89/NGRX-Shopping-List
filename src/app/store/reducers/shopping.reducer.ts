@@ -2,8 +2,8 @@ import { ShoppingActionTypes, ShoppingAction } from '../actions/shopping.actions
 import { ShoppingItem } from '../models/shopping-item.model';
 
 export interface ShoppingState {
-  list: ShoppingItem[],
-  loading: boolean,
+  list: ShoppingItem[];
+  loading: boolean;
   error: Error;
 }
 

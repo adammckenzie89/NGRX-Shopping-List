@@ -8,6 +8,8 @@ import { ShoppingReducer } from './store/reducers/shopping.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { ShoppingEffects } from './store/effects/shopping.effects';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    EffectsModule.forRoot([ShoppingEffects]),
     StoreModule.forRoot({
       shopping: ShoppingReducer
     }),

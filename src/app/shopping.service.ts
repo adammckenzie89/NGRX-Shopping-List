@@ -15,7 +15,7 @@ private SHOPPING_URL = 'http://localhost:4200/shopping';
   constructor(private http: HttpClient) { }
 
   getShoppingItems() {
-    return this.http.get(this.SHOPPING_URL)
+    return this.http.get<ShoppingItem[]>(this.SHOPPING_URL)
     .pipe(delay(500));
   }
 
